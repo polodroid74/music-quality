@@ -53,13 +53,13 @@ local formats_patterns=$(buildFindPatterns "${formats_list}")
 find_cmd="find -O3 "${dir}" -type f ${formats_patterns}"
 
 while read file; do
-	declare -i file_data=$(mediainfo "${file}" | grep "${data_field}[ ]*:" | tr -dc '0-9')
+	declare -i file_data=$(mediainfo --Output="Audio;%${data_field}%" "${file}")
 	if [ "$file_data" -ne 0 ]; then
 		data=$data+$file_data
 		n=$n+1
 	fi
 done <<< $(eval ${find_cmd})
 
-local data=$((${data} / $n))
+local data=$((${data} / (1000*$n)))
 echo ${data}
 }

@@ -33,7 +33,7 @@ declare -i int_part=$(($quality_ratio / 100))
 declare -i float_part=$(($quality_ratio - $int_part * 100))
 
 echo -e "Computing Average Bitrate"
-declare -i avg_bitrate=$(averageData "Bit rate" "${all_formats}" "${music_dir}")
+declare -i avg_bitrate=$(averageData "BitRate" "${all_formats}" "${music_dir}")
 
 #Summary
 echo -e "${COLOR_RED}Found $n_lossless lossless files.${RESET}"
