@@ -26,6 +26,13 @@ echo -e "${COLOR_MAGENTA}Compressed formats : ${compressed_formats}${RESET}"
 echo -e "Parsing compressed formats."
 declare -i n_compressed=$(parseFormats "${compressed_formats}" "${music_dir}")
 
+declare -i n_tot=$n_lossless+$n_compressed
+if [ ${n_tot} -eq 0 ]; then
+	echo -e "${COLOR_RED}Do not find any audio file !${RESET}"
+	exit 0
+fi
+
+
 echo -e "Computing Quality Ratio"
 declare -i numerator=$((10000*$n_lossless))
 declare -i quality_ratio=$(($numerator / ($n_lossless+$n_compressed)))
