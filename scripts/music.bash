@@ -32,11 +32,11 @@ declare -i quality_ratio=$(($numerator / ($n_lossless+$n_compressed)))
 declare -i int_part=$(($quality_ratio / 100))
 declare -i float_part=$(($quality_ratio - $int_part * 100))
 
-echo -e "Computing Average Bit Rate"
-declare -i avg_sample_rate=$(averageData "Bit rate" "${all_formats}" "${music_dir}")
+echo -e "Computing Average Bitrate"
+declare -i avg_bitrate=$(averageData "Bit rate" "${all_formats}" "${music_dir}")
 
 #Summary
 echo -e "${COLOR_RED}Found $n_lossless lossless files.${RESET}"
 echo -e "${COLOR_RED}Found $n_compressed compresssed files.${RESET}"
 echo -e "${COLOR_RED}Quality ratio = $int_part.$float_part%${RESET}"
-echo -e "${COLOR_RED}Average Sample Rate = ${avg_sample_rate}kbps${RESET}"
+echo -e "${COLOR_RED}Average Bitrate = ${avg_bitrate}kbps${RESET}"

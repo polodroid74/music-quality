@@ -51,7 +51,6 @@ declare -i n=0
 local formats_patterns=$(buildFindPatterns "${formats_list}")
 
 find_cmd="find -O3 "${dir}" -type f ${formats_patterns}"
-local files=$(eval ${find_cmd})
 
 while read file; do
 	declare -i file_data=$(mediainfo "${file}" | grep "${data_field}[ ]*:" | tr -dc '0-9')
