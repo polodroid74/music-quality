@@ -36,7 +36,7 @@ parseFormats(){
 local formats_list="$1"
 local dir=$(getAbsolutePath "$2")
 local formats_patterns=$(buildFindPatterns "${formats_list}")
-find_cmd="find "${dir}" -type f ${formats_patterns}"
+find_cmd="find -O3 "${dir}" -type f ${formats_patterns}"
 declare -i n=$(eval ${find_cmd} | wc -l)
 echo $n
 }
@@ -50,7 +50,7 @@ declare -i data=0
 declare -i n=0
 local formats_patterns=$(buildFindPatterns "${formats_list}")
 
-find_cmd="find "${dir}" -type f ${formats_patterns}"
+find_cmd="find -O3 "${dir}" -type f ${formats_patterns}"
 local files=$(eval ${find_cmd})
 
 while read file; do
