@@ -14,7 +14,7 @@ fi
 music_dir=$(getAbsolutePath "$1")
 echo -e "Music dir set to : ${music_dir}${RESET}"
 
-lossless_formats="flac alac aiff wav"
+lossless_formats="flac alac aiff wav wma"
 compressed_formats="mp3 aac m4a ogg"
 all_formats="${lossless_formats} ${compressed_formats}"
 
