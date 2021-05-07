@@ -18,6 +18,9 @@ lossless_formats="flac alac aiff wav"
 compressed_formats="mp3 aac m4a ogg"
 all_formats="${lossless_formats} ${compressed_formats}"
 
+all_files_patterns=$(buildFindPatterns "${all_formats}")
+declare -i n_files=$(eval find -O3 "${music_dir}" -type f ${all_files_patterns} | wc -l)
+echo -e "${n_files} Music files${RESET}"
 
 echo -e "${COLOR_MAGENTA}Lossless formats : ${lossless_formats}${RESET}"
 echo -e "Parsing lossless formats."
@@ -52,6 +55,7 @@ echo -e "Average Sampling Rate = ${avg_sampling_rate}kHz${RESET}"
 #Summary
 echo -e ""
 echo -e "${COLOR_GREEN}ANALYSIS SUMMARY${RESET}"
+echo -e "${COLOR_RED}${n_files} Music files${RESET}"
 echo -e "${COLOR_RED}Found $n_lossless lossless files.${RESET}"
 echo -e "${COLOR_RED}Found $n_compressed compresssed files.${RESET}"
 echo -e "${COLOR_RED}Quality ratio         = $int_part.$float_part%${RESET}"
